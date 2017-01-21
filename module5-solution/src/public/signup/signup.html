@@ -1,0 +1,76 @@
+<div class="container" style="margin-left: 40%">
+<h1>Sign Up For Newsletter</h1>
+
+<fieldset>
+    <form name='regForm' novalidate>
+        <br>
+        <label>First Name: </label><br>
+        <input type="text" style="color: white; background-color: #3CBC8D; width: 20%" name="firstname" placeholder="Enter First Name"
+               ng-model="signupCtrl.user.firstname"
+               required
+               minlength="4"
+               ng-maxlength="10">
+          <span
+                  ng-if="(regForm.firstname.$error.minlength || regForm.firstname.$error.required) && regForm.firstname.$touched">
+            First Name must be at least 4 characters long
+          </span>
+          <span ng-if="regForm.firstname.$error.maxlength && regForm.firstname.$touched">
+            First Name must not be longer than 10 characters
+          </span>
+        <br>
+
+        <label>Last Name: </label><br>
+        <input type="text" style="color: white; background-color: #3CBC8D; width: 20%" name="lastname" placeholder="Enter Last Name"
+               ng-model="signupCtrl.user.lastname"
+               required
+               minlength="4"
+               ng-maxlength="10">
+          <span
+                  ng-if="(regForm.lastname.$error.minlength || regForm.lastname.$error.required) && regForm.lastname.$touched">
+            Last Name must be at least 4 characters long
+          </span>
+          <span ng-if="regForm.lastname.$error.maxlength && regForm.lastname.$touched">
+            Last Name must not be longer than 10 characters
+          </span>
+        <br>
+
+        <label>Email Address: </label><br>
+        <input type="email" style="color: white; background-color: #3CBC8D; width: 20%" name="email" placeholder="tahir@gmail.com"
+               ng-model="signupCtrl.user.email"
+               required>
+          <span ng-if="regForm.email.$invalid && regForm.email.$touched">
+            Must be a valid email address: username@domain.com format
+          </span>
+        <br>
+
+        <label>Phone No: </label><br>
+        <input type="text"  style="color: white; background-color: #3CBC8D; width: 20%" name="phone" placeholder="Phone ###-###-####"
+               ng-model="signupCtrl.user.phone"
+               pattern="(\d{3})-(\d{3})-(\d{4})">
+          <span ng-if="regForm.phone.$invalid && regForm.phone.$touched">
+            Phone must be in the format ###-###-####.
+          </span>
+        <br>
+
+        <label>Menu No: </label><br>
+        <input type="text"  style="color: white; background-color: #3CBC8D; width: 20%" name="dish" placeholder="Short_Name Of Favorite item"
+               ng-model="signupCtrl.user.dish">
+          <span ng-if="!signupCtrl.itemFound">
+            No such menu number exists
+          </span>
+        <br>
+
+        <button style="color: #3CBC8D;background-color: #761c19"
+                ng-disabled="regForm.$invalid"
+                ng-click="signupCtrl.signUp()">Submit</button>
+        <span style="color: darkgreen" ng-if="signupCtrl.validInfo">
+            <h3>Your information has been saved</h3>
+          </span>
+
+        <div style="margin-top: 10px;">
+            Form valid? {{ regForm.$valid }}
+        </div>
+
+    </form>
+</fieldset>
+    </div>

@@ -1,0 +1,35 @@
+
+  <div ng-if="$ctrl.user == null" style="margin-left: 40%">
+        <span style="color: red">
+            <h1>Not Signed Up Yet. </h1>
+          </span><a ui-sref="public.signup">
+        <span style="color: red">
+            <h1>Sign up Now!</h1>
+          </span>
+        </a>
+    </div>
+    <div ng-if="$ctrl.user != null" style="margin-left: 40%">
+        <label>First Name: </label> {{$ctrl.user.firstname}} <br>
+        <label>Last Name: </label> {{$ctrl.user.lastname}} <br>
+        <label>Email: </label> {{$ctrl.user.email}} <br>
+        <label>Phone No: </label> {{$ctrl.user.phone}} <br>
+        <label>Favorite Item: </label><br>
+        <div class="menu-item-tile col-md-6">
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="menu-item-photo">
+                        <div>{{$ctrl.user.itemDetails.short_name}}</div>
+                        <img class="img-responsive" width="450" height="350" ng-src="{{$ctrl.basePath}}/images/{{$ctrl.user.itemDetails.short_name}}.jpg" alt="{{$ctrl.user.itemDetails.name}}">
+                    </div>
+
+                </div>
+                <div class="menu-item-description">
+                    <h3 class="menu-item-title">{{$ctrl.user.itemDetails.name}}</h3>
+                </div>
+                <br>
+                <p>{{$ctrl.user.itemDetails.description}}</p>
+            </div>
+            <hr class="visible-xs">
+        </div>
+
+    </div>
